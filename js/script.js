@@ -1,24 +1,28 @@
-const check_repo_form = document.getElementById("check-repo-form");
-const folder = document.getElementById("folder");
-const result = document.getElementById("result");
-check_repo_form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    result.innerHTML = "Checking...";
-    fetch("check-repo.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            folder: folder.value,
-        }),
-    })
-        .then((res) => {
-            res.json().then((data) => {
-                result.innerHTML = data.is_remote_ahead ? "Not OK" : "OK";
-            });
+const checkRepoForms = document.querySelectorAll("#check-repo-form");
+
+checkRepoForms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const folder = form.querySelector("#folder");
+        const result = form.querySelector("#result");
+        result.innerHTML = "Checking...";
+        console.log(folder.value + " is being checked");
+        fetch("check-repo.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                folder: folder.value,
+            }),
         })
-        .catch((err) => {
-            result.innerHTML = "Error: " + err;
-        });
+            .then((res) => {
+                res.json().then((data) => {
+                    result.innerHTML = data.is_remote_ahead ? "Not OK" : "OK";
+                });
+            })
+            .catch((err) => {
+                result.innerHTML = "Error: " + err;
+            });
+    });
 });

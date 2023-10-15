@@ -14,17 +14,19 @@ Utils::init();
 <body>
     <div class="container">
         <?php foreach (Utils::getAllRepoFolders() as $folder): ?>
-
             <h2>Folder:
                 <?= $folder ?>
             </h2>
-            <div id="result">
-            </div>
-            <input type='hidden' id='folder' value=<?= $folder ?>>
             <form id="check-repo-form">
+                <div id="result">
+                </div>
+                <input type='hidden' id='folder' value=<?= $folder ?>>
                 <button type="submit">Check for Updates</button>
             </form>
             <form id="update-repo-form">
+                <div id="result">
+                </div>
+                <input type='hidden' id='folder' value=<?= $folder ?>>
                 <button type="submit">Update Repo</button>
             </form>
         <?php endforeach; ?>
