@@ -17,16 +17,16 @@ Utils::init();
             <h2>Folder:
                 <?= $folder ?>
             </h2>
-            <form id="check-repo-form">
-                <div id="result">
+            <form class="check-repo-form">
+                <div class="result">
                 </div>
-                <input type='hidden' id='folder' value=<?= $folder ?>>
+                <input type='hidden' class='folder' value=<?= $folder ?>>
                 <button type="submit">Check for Updates</button>
             </form>
-            <form id="update-repo-form">
-                <div id="result">
+            <form class="update-repo-form">
+                <div class="result">
                 </div>
-                <input type='hidden' id='folder' value=<?= $folder ?>>
+                <input type='hidden' class='folder' value=<?= $folder ?>>
                 <button type="submit">Update Repo</button>
             </form>
         <?php endforeach; ?>
