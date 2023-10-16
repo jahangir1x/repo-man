@@ -27,7 +27,7 @@ Utils::init();
 
 <body data-bs-theme="dark">
     <div class="container">
-        <h3 class="display-6">All Repositories</h3>
+        <h3 class="display-6 text-center py-3">All Repositories</h3>
         <table class="table table-striped">
             <tr>
                 <th>Path</th>
