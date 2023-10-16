@@ -42,3 +42,31 @@
     display: flex;
     align-items: center;
 }
+
+.heading {
+    transition-timing-function: ease-in;
+    transition: 0.2s;
+    font-size: 2em;
+    color: deepskyblue;
+    text-decoration: none;
+}
+
+.heading:link {
+    font-size: 2em;
+    color: deepskyblue;
+    text-decoration: none;
+    border-bottom: 1px solid deepskyblue;
+}
+
+.heading:hover {
+    font-size: 2em;
+    color: deepskyblue;
+    border-bottom: 6px solid deepskyblue;
+    text-decoration: blink;
+}
+
+.description {
+    display: block;
+    margin-top: 5px;
+}
+
