@@ -4,12 +4,25 @@ require_once 'Utils.php';
 Utils::init();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>INDEX | jahangir1x</title>
-    <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="description" content="Personal PHP projects with github repository" />
+    <meta name="keywords" content="PHP, Github, GitHub with checking" />
+    <meta name="author" content="Jahangir Alam Rocky" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="google" content="notranslate" />
+
+    <link id="favicon" rel="icon" href="" />
+
 </head>
 
 <body data-bs-theme="dark">
@@ -21,41 +34,45 @@ Utils::init();
                 <th>Action</th>
                 <th>Repository</th>
             </tr>
-            <?php foreach (Utils::getAllRepoFolders() as $folder): ?>
-                <tr>
-                    <td><a href="<?= "../" . basename($folder) ?>">
-                            <?= basename($folder) ?>
-                        </a>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <form class="check-repo-form">
-                                <div class="result">
-                                </div>
-                                <input type='hidden' class='folder' value=<?= $folder ?>>
-                                <button type="submit">Check for Updates</button>
-                            </form>
-                        </div>
-                    </td>
-                    <td>
-                        <a href="<?= Git::getRemoteUrl($folder) ?>">
-                            <?= Git::getRemoteUrl($folder) ?>
-                        </a>
-                    </td>
-                    <!-- <form class="update-repo-form">
-                        <div class="result">
-                        </div>
-                        <input type='hidden' class='folder' value=<?= $folder ?>>
-                        <button type="submit">Update Repo</button>
-                    </form> -->
-                </tr>
-            <?php endforeach; ?>
-        </table>
     </div>
+    <?php foreach (Utils::getAllRepoFolders() as $folder): ?>
+        <tr id=<?= $folder ?>>
+            <td class="path-url"><a href="<?= "../" . basename($folder) ?>">
+                    <?= basename($folder) ?>
+                </a>
+                <div class="spinner"></div>
+                <div class="check"><i class="fas fa-check-circle fa-2x"></i></div>
+                <div class="cross"><i class="fas fa-times fa-2x"></i></div>
+            </td>
+            <td>
+                <form class="check-repo-form">
+                    <input type="hidden" class="folder" value=<?= $folder ?>>
+                    <button class="btn btn-primary btn-sm check-btn" type="submit">Check again</button>
+                </form>
+                <form class="update-repo-form">
+                    <input type='hidden' class='folder' value=<?= $folder ?>>
+                    <button class="btn btn-warning btn-sm update-btn" type="submit">Sync with remote</button>
+                </form>
+            </td>
+            <td>
+                <a href="<?= Git::getRemoteUrl($folder) ?>">
+                    <?= Git::getRemoteUrl($folder) ?>
+                </a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </table>
+    </div>
+    <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+
 </body>
 
 </html>

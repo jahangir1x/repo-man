@@ -1,0 +1,44 @@
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    display: none;
+    border: 4px solid #535353;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 32px;
+    height: 32px;
+    animation: spin 2s linear infinite;
+    margin-left: 10px;
+}
+
+.check {
+    display: none;
+    color: #4cff4c;
+    margin-left: 10px;
+}
+
+.cross {
+    display: none;
+    color: #ff4747;
+    margin-left: 10px;
+}
+
+.check-btn {
+    display: none;
+}
+
+.update-btn {
+    display: none;
+}
+
+.path-url {
+    display: flex;
+    align-items: center;
+}

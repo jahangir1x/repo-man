@@ -6,7 +6,7 @@ class Git
     {
 
         if (Utils::isValidDirectory($folder)) {
-            $output = shell_exec("git -C " . $folder . " fetch --dry-run; git -C " . $folder . " status -uno" . " 2>&1");
+            $output = shell_exec("git -C " . $folder . " fetch; git -C " . $folder . " status -uno" . " 2>&1");
             return strpos($output, 'Your branch is behind') !== false;
         } else {
             return false;
@@ -17,7 +17,7 @@ class Git
     public static function pull($folder): void
     {
         if (Utils::isValidDirectory($folder)) {
-            shell_exec("git -C " . $folder . " --rest HEAD; git -C " . $folder . " pull" . " 2>&1");
+            shell_exec("git -C " . $folder . " reset --hard HEAD; git -C " . $folder . " pull" . " 2>&1");
         }
     }
 
